@@ -1,0 +1,143 @@
+/*all styles go here*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+html, body {
+    min-height:100vh;
+    background: #1f4634;
+    min-width: 320px;
+    color: #fff;
+}
+.container {
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: url(../img/clover.png) center 65% no-repeat;
+    background-size: 40%;
+}
+.main-page .header {
+    border-bottom: 1px solid #333;
+    padding: 20px;
+}
+.main-page .header h1 {
+    margin-bottom: 20px;
+}
+.main-page .header h1,
+.main-page .header p,
+.main-page .header a{
+    text-align: center;
+}
+.main-page a.start-game {
+    padding: 10px;
+    font-size: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #000;
+    color: #fff;
+    display: block;
+    width: 150px;
+    margin: 20px auto 0;
+}
+.main-page a.start-game:hover {
+    background: #333;
+}
+.main-page .card-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+.main-page .card-content .card {
+    box-sizing: border-box;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: relative;
+    width: 7%;
+    padding: 5% 1%;
+    text-align: center;
+    margin-right: 0.32%;
+    margin-left: 0.32%;
+    margin-bottom: 5px;
+    display: inline-block;
+    cursor: pointer;
+    background: url("../img/card.png") center center no-repeat;
+    background-size: cover;
+    border: 1px solid #e5362a;
+}
+.main-page .card-content .card.revealed {
+    background: #fff;
+    transition: background 0.5s ease;
+    border: 1px solid #000;
+}
+.main-page .card-content .card.revealed p {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    color: #333;
+    font-size: 25px;
+}
+.main-page .card-content .moves-count {
+    margin-top: 40px;
+    text-align: center;
+}
+.main-page .overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: #000;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+}
+.main-page .over-sign{
+    background: #e5362a;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    position: fixed;
+    text-align: center;
+    padding: 20px;
+    width: 300px;
+    top: 40%;
+    left: 50%;
+    margin-left: -150px;
+
+}
+/*=====================================================
+=            Bootstrap 2.3.2 Media Queries            =
+=====================================================*/
+@media only screen and (max-width : 1200px) {
+
+}
+
+@media only screen and (max-width : 979px) {
+
+}
+
+@media only screen and (max-width : 767px) {
+    .main-page .card-content .card {
+        width: 22.5%;
+        padding: 16% 10%;
+        text-align: center;
+        margin-right: 1%;
+        margin-left: 1%;
+    }
+}
+
+@media only screen and (max-width : 480px) {
+
+}
+
+@media only screen and (max-width : 320px) {
+
+}
+
+
