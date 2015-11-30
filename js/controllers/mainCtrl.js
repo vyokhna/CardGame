@@ -1,11 +1,14 @@
 //a controller for the game itself
 cardApp.controller('mainCtrl', ['$scope', '$timeout', function($scope, $timeout){
 
-    $scope.deckArray = [];
     $scope.cardPair = [];
+    $scope.deckArray = [];
+    $scope.gameOver = false;
     $scope.moveMade = false;
     $scope.movesCount = 0;
-    $scope.gameOver = false;
+
+    //number of cards in half of deck
+    $scope.halfDeckVolume = 2;
 
     $scope.createDeck = function () {
 
@@ -15,16 +18,24 @@ cardApp.controller('mainCtrl', ['$scope', '$timeout', function($scope, $timeout)
             halfDeck = [];
 
         //creating random cards and pushing them to halfDeck array
-        for(var i=1; i<=2; i++){
+        for(var i=1; i<=$scope.halfDeckVolume; i++){
             var item = (_.sample(values)) + (_.sample(suits));
             halfDeck.push(item)
         }
 
         //creating a full deck and shuffling it
         var deck = _.shuffle(halfDeck.concat(halfDeck));
-
         for(var i=0; i<=deck.length-1; i++){
-            $scope.deckArray[i] = {id: i, value: deck[i], revealed: false, matched: false};
+            $scope.deckArray[i] = {
+                id: i,
+                value: deck[i],
+                revealed: false,
+                matched: false,
+                color: 'black'
+            };
+            if($scope.deckArray[i].value[1] == '♥' || $scope.deckArray[i].value[1] == '♦'){
+                $scope.deckArray[i].color = 'red'
+            }
         }
     };
 
@@ -43,29 +54,30 @@ cardApp.controller('mainCtrl', ['$scope', '$timeout', function($scope, $timeout)
             if($scope.cardPair.length < 2){
                 $scope.cardPair.push(card);
 
-                if(($scope.cardPair.length == 2) &&
-                    ($scope.cardPair[0].value == $scope.cardPair[1].value) &&
-                    ($scope.cardPair[0].id != $scope.cardPair[1].id)){
+                //assigning conditions to variables
+                var ifTwo = $scope.cardPair.length == 2,
+                    ifEqual = $scope.cardPair[0].value == $scope.cardPair[1].value,
+                    ifNotSame = $scope.cardPair[0].id != $scope.cardPair[1].id;
+
+                if(ifTwo && ifEqual && ifNotSame){
                     _.each($scope.cardPair, function(el){
                         $scope.deckArray[el.id].matched = true;
                     });
                     $scope.cardPair = [];
                     $scope.movesCount++;
 
+                    //creating a temporary array to store all "matched" values
                     var arr = [];
                     _.each($scope.deckArray, function(el){
-
                             arr.push(el.matched);
                     });
 
+                    //checking if this turn is the last one and finishing the game if it is so
                     $scope.gameOver = _.every(arr, function(el2) {
                         return el2 === true
                     })
 
-
-
-
-                } else if($scope.cardPair.length == 2){
+                } else if(ifTwo){
                     $scope.moveMade = true;
                     $timeout(function(){
                         _.each($scope.cardPair, function(el){
@@ -81,6 +93,7 @@ cardApp.controller('mainCtrl', ['$scope', '$timeout', function($scope, $timeout)
         }
     };
 
+    //begin the game once more
     $scope.startOver = function(){
         $scope.gameOver = false;
         $scope.movesCount = 0;

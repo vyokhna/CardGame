@@ -16,7 +16,7 @@ html, body {
     min-height: 100vh;
     max-width: 1200px;
     margin: 0 auto;
-    background: url(../img/clover.png) center 65% no-repeat;
+    background: url(../img/clover.png) center 70% no-repeat;
     background-size: 40%;
 }
 .main-page .header {
@@ -41,7 +41,7 @@ html, body {
     background: #000;
     color: #fff;
     display: block;
-    width: 150px;
+    width: 200px;
     margin: 20px auto 0;
 }
 .main-page a.start-game:hover {
@@ -83,6 +83,9 @@ html, body {
     color: #333;
     font-size: 25px;
 }
+.main-page .card-content .card.revealed p.red {
+    color: #e5362a;
+}
 .main-page .card-content .moves-count {
     margin-top: 40px;
     text-align: center;
@@ -97,7 +100,7 @@ html, body {
     opacity: 0.5;
 }
 .main-page .over-sign{
-    background: #e5362a;
+    background: #1f4634;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
@@ -106,10 +109,12 @@ html, body {
     text-align: center;
     padding: 20px;
     width: 300px;
-    top: 40%;
+    top: 35%;
     left: 50%;
     margin-left: -150px;
-
+}
+.main-page .over-sign h1 {
+    margin-bottom: 10px;
 }
 /*=====================================================
 =            Bootstrap 2.3.2 Media Queries            =
