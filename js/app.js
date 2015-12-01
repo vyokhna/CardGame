@@ -1,16 +1,17 @@
 //main application file
 
-var cardApp = angular.module('cardApp', ['ngRoute']);
+var cardApp = angular.module('cardApp', ['ui.router']);
 
-cardApp.config(function($routeProvider) {
+cardApp.config(function($stateProvider, $urlRouterProvider) {
 
     // Now set up the states
-    $routeProvider
+    $stateProvider
 
-        .when('/', {
+        .state('/game', {
+            url: '/game',
             templateUrl: "partials/main.html",
             controller: 'mainCtrl'
-        })
+        });
 
-        .otherwise({ redirectTo: '/' })
+        $urlRouterProvider.otherwise('/game');
 });

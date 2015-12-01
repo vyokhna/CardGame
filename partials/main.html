@@ -2,7 +2,7 @@
     <div class="header">
         <h1>HELLO, PLAYER!</h1>
         <p>I welcome you to play a simple card game.<br/>There is a deck of cards where each card has a pair (there are at least 2x of each card in the deck). Cards are laid out face-down in a grid in random order. You can flip two cards at a time. If flipped card faces match, they stay face up. If cards don't match, they are placed face down again.<br/>You win when all cards are facing up!</p>
-        <a class="start-game" ng-click="createDeck()">START</a>
+        <a class="start-game" ng-click="createDeck()">START / REPLAY</a>
     </div>
     <div class="card-content">
         <card ng-repeat="card in deckArray" ng-click="revealCard(card)"></card>
@@ -13,6 +13,6 @@
     <div class="over-sign" ng-if="gameOver">
         <h1>WELL DONE!</h1>
         <p>You've finished your game in {{movesCount}} moves!</p>
-        <a class="start-game" ng-click="startOver()">START OVER</a>
+        <a class="start-game" ng-click="createDeck()">START OVER</a>
     </div>
 </div>
