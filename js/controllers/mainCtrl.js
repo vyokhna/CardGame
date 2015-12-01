@@ -66,7 +66,7 @@ cardApp.controller('mainCtrl', ['$scope', '$timeout', function($scope, $timeout)
             $scope.matchedPairs++;
 
             //checking if this turn is the last one and finishing the game if it is so
-            $scope.gameOver = ($scope.deckArray.length / $scope.matchedPairs === 2);
+            $scope.gameOver = ($scope.deckArray.length / $scope.matchedPairs == 2);
 
         //if cards don't match
         }else if($scope.cardPair.length == 2 && $scope.cardPair[0].value != $scope.cardPair[1].value && $scope.cardPair[0].id != $scope.cardPair[1].id){
